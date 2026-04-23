@@ -1,0 +1,87 @@
+{
+  "name": "ＢＥＥＲＵＳ",
+  "username": "Mister_Beerus",
+  "_id": 8779124142,
+  "level": 1,
+  "exp": 0,
+  "max_exp": 100,
+  "power": 100,
+  "rank": "Rookie",
+  "bounty": 0,
+  "chars": [
+    {
+      "_id": 3003,
+      "name": "Charlotte Flampe",
+      "pic": "https://i.ibb.co/35qRBM81/57a0fb2480ac.jpg",
+      "level": 1,
+      "xp": 0,
+      "max_xp": 100,
+      "bounty": 0,
+      "stamina": 78000,
+      "hp": 110,
+      "max_hp": 110,
+      "attack": 88,
+      "defense": 88,
+      "speed": 170,
+      "crit_rate": 10,
+      "skill_1": {
+        "name": "Needle Shot",
+        "damage": 30,
+        "accuracy": 95,
+        "power": 50
+      },
+      "skill_2": {
+        "name": "Sneaky Hit",
+        "damage": 50,
+        "accuracy": 90,
+        "power": 65
+      },
+      "ultimate": {
+        "name": "Disrupt Tactics",
+        "damage": 70,
+        "accuracy": 85,
+        "power": 80
+      }
+    }
+  ],
+  "fav_char": null,
+  "devil_fruit": {
+    "owned": null,
+    "mastery": 0,
+    "awakened": false
+  },
+  "inv": {
+    "boosters": 0,
+    "rename_cards": 0,
+    "revive_food": 0
+  },
+  "currency": {
+    "beli": 4856,
+    "neo_fragments": 10,
+    "devil_tickets": 5
+  },
+  "main_team": 1,
+  "teams": {
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": [],
+    "5": [],
+    "6": []
+  },
+  "ship": "Not Build",
+  "wins": 0,
+  "loss": 0,
+  "draw": 0,
+  "daily_streak": 0,
+  "last_daily": null,
+  "last_transaction": null,
+  "last_battle": null,
+  "last_spin": null,
+  "title": "New Pirate",
+  "crew": null,
+  "region": "East Blue",
+  "story_progress": 1,
+  "premium": false,
+  "created_at": "2026-04-21T04:04:34.009068"
+}

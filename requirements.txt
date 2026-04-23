@@ -1,0 +1,6 @@
+telebot
+pillow
+requests
+aiohttp
+python-dotenv
+Pathlib
