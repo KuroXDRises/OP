@@ -30,12 +30,13 @@ def balance_message(data):
 def balance_handler(bot):
 
     @bot.on_message(filters.command("bal"))
-    def balance_command(client, message):
+    async def balance_command(client, message):
+
         user_id = message.from_user.id
         user_data = utils.get_user(user_id)
 
         if user_data is None:
-            return message.reply(
+            return await message.reply(
                 "You are not registered yet!"
             )
 
@@ -52,22 +53,27 @@ def balance_handler(bot):
             ]
         )
 
-        message.reply(
+        await message.reply(
             msg,
             reply_markup=kb
         )
 
     @bot.on_callback_query(filters.regex("^exit:"))
-    def balance_callback(client, call):
+    async def balance_callback(client, call):
 
         user_id = int(call.data.split(":", 1)[1])
 
         if call.from_user.id != user_id:
-            return
+            return await call.answer(
+                "Not your vault.",
+                show_alert=True
+            )
 
-        call.message.delete()
+        await call.message.delete()
 
-        client.send_message(
+        await client.send_message(
             call.message.chat.id,
             "Exited from balance vault."
         )
+
+        await call.answer()

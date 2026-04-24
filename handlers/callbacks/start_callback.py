@@ -1,5 +1,6 @@
 from pyrogram import filters
 from pyrogram.types import *
+from pyrogram.enums import ParseMode
 import utils
 from db.starters import starters
 
@@ -37,21 +38,21 @@ Your pirate registration is complete successfully.
 🌊 Set sail now and become the next Pirate King!
 """
 
+
 def start_callback(bot):
+
     @bot.on_callback_query(filters.regex("^register:"))
-    def register_callback(client, call):
+    async def register_callback(client, call):
 
         user_id = int(call.data.split(":", 1)[1])
 
         if utils.get_user(user_id) is not None:
-            return call.answer(
+            return await call.answer(
                 "You already registered!",
                 show_alert=True
             )
 
         char_data = utils.prepare_starters_data(0)
-        msg = utils.starter_stats_message(char_data)
-        pic = char_data["pic"]
 
         kb = InlineKeyboardMarkup(
             [
@@ -74,19 +75,20 @@ def start_callback(bot):
             ]
         )
 
-        call.message.delete()
+        await call.message.delete()
 
-        client.send_photo(
+        await client.send_photo(
             call.message.chat.id,
-            photo=pic,
-            caption=msg,
-            reply_markup=kb
+            photo=char_data["pic"],
+            caption=utils.starter_stats_message(char_data),
+            reply_markup=kb,
+            parse_mode=ParseMode.HTML
         )
 
-        call.answer()
+        await call.answer()
 
     @bot.on_callback_query(filters.regex("^select_char:"))
-    def previous_next_callback(client, call):
+    async def previous_next_callback(client, call):
 
         index = int(call.data.split(":", 1)[1])
         total = len(starters)
@@ -120,33 +122,36 @@ def start_callback(bot):
             ]
         )
 
-        call.message.edit_media(
+        await call.message.edit_media(
             media=InputMediaPhoto(
                 media=char["pic"],
-                caption=utils.starter_stats_message(char)
+                caption=utils.starter_stats_message(char),
+                parse_mode=ParseMode.HTML
             ),
             reply_markup=kb
         )
 
-        call.answer()
+        await call.answer()
 
     @bot.on_callback_query(filters.regex("^choose_char:"))
-    def choose_character_callback(client, call):
+    async def choose_character_callback(client, call):
 
         user_id = call.from_user.id
         index = int(call.data.split(":", 1)[1])
+
         char = utils.prepare_starters_data(index)
 
         if utils.get_user(user_id) is not None:
-            return call.answer(
+            return await call.answer(
                 "You already registered!",
                 show_alert=True
             )
 
         utils.create_user(call.from_user, char)
 
-        call.message.edit_caption(
-            caption=welcome_message(call.from_user)
+        await call.message.edit_caption(
+            caption=welcome_message(call.from_user),
+            parse_mode=ParseMode.HTML
         )
 
-        call.answer()
+        await call.answer()

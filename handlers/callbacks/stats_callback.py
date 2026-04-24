@@ -4,15 +4,16 @@ import utils
 
 
 def stats_callback(bot):
+
     @bot.on_callback_query(filters.regex("^data:"))
-    def info_callback(client, call):
+    async def info_callback(client, call):
 
         page = int(call.data.split(":", 3)[1])
         user_id = int(call.data.split(":", 3)[2])
         char_name = call.data.split(":", 3)[3]
 
         if call.from_user.id != user_id:
-            return call.answer(
+            return await call.answer(
                 "This button is not for you.",
                 show_alert=True
             )
@@ -102,13 +103,16 @@ def stats_callback(bot):
         )
 
         if char is None:
-            return
+            return await call.answer(
+                "Character not found.",
+                show_alert=True
+            )
 
         msg = utils.load_stats_msg(page, char)
 
-        call.message.edit_caption(
+        await call.message.edit_caption(
             caption=msg,
             reply_markup=kb
         )
 
-        call.answer()
+        await call.answer()

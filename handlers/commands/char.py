@@ -2,21 +2,24 @@ from pyrogram import filters
 from pyrogram.types import *
 import utils
 
+
 def stats_handler(bot):
+
     @bot.on_message(filters.command(["stats", "info"]))
-    def stats_command(client, message):
+    async def stats_command(client, message):
+
         user_id = message.from_user.id
         data = utils.get_user(user_id)
 
         if data is None:
-            return message.reply(
+            return await message.reply(
                 "Sorry! I cant get your data because you did not started the bot yet.\nPlease start the bot first."
             )
 
         args = message.text.split(" ", 1)
 
         if len(args) < 2:
-            return message.reply(
+            return await message.reply(
                 "No chatacter name found in your message."
             )
 
@@ -31,7 +34,7 @@ def stats_handler(bot):
         )
 
         if not char_data:
-            return message.reply(
+            return await message.reply(
                 "You do not own this character."
             )
 
@@ -56,7 +59,7 @@ def stats_handler(bot):
             ]
         )
 
-        message.reply_photo(
+        await message.reply_photo(
             photo=char_data["pic"],
             caption=msg,
             reply_markup=kb

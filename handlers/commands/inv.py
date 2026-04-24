@@ -42,14 +42,15 @@ def inventory_panel_msg(data):
 
 
 def inventory_handler(bot):
+
     @bot.on_message(filters.command("inv"))
-    def inv_command(client, message):
+    async def inv_command(client, message):
 
         user_id = message.from_user.id
         data = utils.get_user(user_id)
 
         if data is None:
-            return message.reply(
+            return await message.reply(
                 "You are not registered yet!"
             )
 
@@ -66,24 +67,27 @@ def inventory_handler(bot):
             ]
         )
 
-        message.reply_photo(
+        await message.reply_photo(
             photo="https://i.ibb.co/NnZQ53cb/7a41459c71f1.jpg",
             caption=msg,
             reply_markup=kb
         )
 
     @bot.on_callback_query(filters.regex("^inv_exit:"))
-    def inventory_exit(client, call):
+    async def inventory_exit(client, call):
 
         user_id = int(call.data.split(":", 1)[1])
 
         if call.from_user.id != user_id:
-            return call.answer("Not your panel.", show_alert=True)
+            return await call.answer(
+                "Not your panel.",
+                show_alert=True
+            )
 
-        call.message.delete()
+        await call.message.delete()
 
-        call.message.reply(
+        await call.message.reply(
             "Exited from Inventory Panel."
         )
 
-        call.answer()
+        await call.answer()

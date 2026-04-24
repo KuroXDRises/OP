@@ -3,18 +3,15 @@ from pyrogram.types import *
 import utils
 from db.starters import *
 
-
 def start_handler(bot):
-    @Client.on_message(filters.command("start"), group=1)
-    def start_command(client, message):
+    @bot.on_message(filters.command("start"), group=1)
+    async def start_command(client, message):
         user_id = message.from_user.id
-
         if message.chat.type != "private":
-            return message.reply(
+            return await message.reply(
                 "🏴‍☠️ /start only works in private chat.\n"
                 "Please message me privately to begin your pirate journey."
             )
-
         if utils.get_user(user_id) is not None:
             msg = """
 🏴‍☠️ You are already registered, Captain!
@@ -29,8 +26,7 @@ Your pirate journey is already active in the One Piece world.
 
 Set sail and chase the Grand Line glory!
 """
-            return message.reply(msg)
-
+            return await message.reply(msg)
         kb = InlineKeyboardMarkup(
             [
                 [
@@ -41,7 +37,6 @@ Set sail and chase the Grand Line glory!
                 ]
             ]
         )
-
         msg = """
 🏴‍☠️ Welcome to the Great One Piece World!
 
@@ -56,8 +51,7 @@ Create your pirate identity, grow stronger, collect powerful allies, raise your 
 
 ⬇️ Tap Register below to begin your pirate journey!
 """
-
-        message.reply_photo(
+        await message.reply_photo(
             photo="https://i.ibb.co/ynrdpVw0/0179e4fd0ca6.png",
             caption=msg,
             reply_markup=kb
