@@ -1,7 +1,15 @@
-users/*.json
-
-.env
-
 __pycache__/
 
 *.pyc
+
+*.pyo
+
+*.log
+
+.env
+
+users/
+
+sessions/
+
+*.session

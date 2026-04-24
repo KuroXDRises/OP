@@ -1,16 +1,18 @@
-from telebot import types
+from pyrogram import filters, Client
+from pyrogram.types import *
 import utils
 from db.starters import *
 
+
 def start_handler(bot):
-    @bot.message_handler(commands=["start"])
-    def start_command(message):
+    @Client.on_message(filters.command("start"), group=1)
+    def start_command(client, message):
         user_id = message.from_user.id
 
         if message.chat.type != "private":
-            return bot.reply_to(
-                message,
-                "🏴‍☠️ /start only works in private chat.\nPlease message me privately to begin your pirate journey."
+            return message.reply(
+                "🏴‍☠️ /start only works in private chat.\n"
+                "Please message me privately to begin your pirate journey."
             )
 
         if utils.get_user(user_id) is not None:
@@ -27,15 +29,17 @@ Your pirate journey is already active in the One Piece world.
 
 Set sail and chase the Grand Line glory!
 """
-            bot.reply_to(message, msg)
-            return
+            return message.reply(msg)
 
-        kb = types.InlineKeyboardMarkup()
-        kb.add(
-            types.InlineKeyboardButton(
-                "🏴‍☠️ Register",
-                callback_data=f"register:{user_id}"
-            )
+        kb = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🏴‍☠️ Register",
+                        callback_data=f"register:{user_id}"
+                    )
+                ]
+            ]
         )
 
         msg = """
@@ -53,8 +57,7 @@ Create your pirate identity, grow stronger, collect powerful allies, raise your 
 ⬇️ Tap Register below to begin your pirate journey!
 """
 
-        bot.send_photo(
-            message.chat.id,
+        message.reply_photo(
             photo="https://i.ibb.co/ynrdpVw0/0179e4fd0ca6.png",
             caption=msg,
             reply_markup=kb

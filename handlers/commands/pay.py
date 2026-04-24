@@ -1,66 +1,61 @@
 import utils
+from pyrogram import filters
+
 
 def pay_handler(bot):
-    @bot.message_handler(commands=["pay"])
-    def pay_command(message):
+    @bot.on_message(filters.command("pay"))
+    def pay_command(client, message):
+
         user_id = message.from_user.id
         data = utils.get_user(user_id)
 
         if data is None:
-            return bot.reply_to(
-                message,
+            return message.reply(
                 "Register on the bot first."
             )
 
         if not message.reply_to_message:
-            return bot.reply_to(
-                message,
+            return message.reply(
                 "Reply to a user to send them Beli."
             )
 
         target_id = message.reply_to_message.from_user.id
 
         if target_id == user_id:
-            return bot.reply_to(
-                message,
+            return message.reply(
                 "You cannot transfer Beli to yourself."
             )
 
         data2 = utils.get_user(target_id)
 
         if data2 is None:
-            return bot.reply_to(
-                message,
+            return message.reply(
                 "That user is not registered yet."
             )
 
         args = message.text.split(" ", 1)
 
         if len(args) < 2:
-            return bot.reply_to(
-                message,
+            return message.reply(
                 "Usage: /pay {amount}"
             )
 
         am = args[1].strip()
 
         if not am.isdigit():
-            return bot.reply_to(
-                message,
+            return message.reply(
                 "Please send a valid number."
             )
 
         am = int(am)
 
         if am <= 0:
-            return bot.reply_to(
-                message,
+            return message.reply(
                 "Amount must be greater than 0."
             )
 
         if am > data["currency"]["beli"]:
-            return bot.reply_to(
-                message,
+            return message.reply(
                 "You don't have enough Beli."
             )
 
@@ -76,8 +71,7 @@ def pay_handler(bot):
         data2["currency"]["beli"] += received
         utils.save_user(data2)
 
-        bot.reply_to(
-            message,
+        message.reply(
             f"""
 <b>✧ Grand Line Transfer Complete ✧</b>
 
@@ -93,6 +87,5 @@ def pay_handler(bot):
 ❖ Gold moves across the seas again.
 
 <b>Continue your pirate journey.</b>
-""",
-            parse_mode="HTML"
+"""
         )

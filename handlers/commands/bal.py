@@ -1,5 +1,7 @@
-from telebot import types
+from pyrogram import filters
+from pyrogram.types import *
 import utils
+
 
 def balance_message(data):
     currency = data["currency"]
@@ -24,40 +26,48 @@ def balance_message(data):
 ✦═════════════✦
 """
 
+
 def balance_handler(bot):
-    @bot.message_handler(commands=["bal"])
-    def balance_command(message):
+
+    @bot.on_message(filters.command("bal"))
+    def balance_command(client, message):
         user_id = message.from_user.id
         user_data = utils.get_user(user_id)
+
         if user_data is None:
-            return bot.reply_to(
-                message,
+            return message.reply(
                 "You are not registered yet!"
-                )
+            )
+
         msg = balance_message(user_data)
-        kb = types.InlineKeyboardMarkup()
-        kb.add(
-            types.InlineKeyboardButton(
-                "Exit Vault", callback_data=f"exit:{user_id}"
-                )
-                )
-        bot.reply_to(
-            message,
+
+        kb = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "Exit Vault",
+                        callback_data=f"exit:{user_id}"
+                    )
+                ]
+            ]
+        )
+
+        message.reply(
             msg,
-            reply_markup=kb)
-        @bot.callback_query_handler(func=lambda call: call.data.startswith("exit:"))
-        def balance_callback(call):
-            bot.answer_callback_query(
-                call.id
-                )
-            user_id = int(call.data.split(":", 1)[1])
-            if call.from_user.id != user_id:
-                return
-            bot.delete_message(
-                call.message.chat.id,
-                call.message.message_id
-                )
-            bot.send_message(
-                call.message.chat.id,
-                "Exited from balance vault."
-                )
+            reply_markup=kb
+        )
+
+    @bot.on_callback_query(filters.regex("^exit:"))
+    def balance_callback(client, call):
+
+        user_id = int(call.data.split(":", 1)[1])
+
+        if call.from_user.id != user_id:
+            return
+
+        call.message.delete()
+
+        client.send_message(
+            call.message.chat.id,
+            "Exited from balance vault."
+        )

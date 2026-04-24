@@ -1,87 +1,94 @@
-from telebot import types
+from pyrogram import filters
+from pyrogram.types import *
 import utils
 
 
 def stats_callback(bot):
-    @bot.callback_query_handler(func=lambda call: call.data.startswith("data:"))
-    def info_callback(call):
-        bot.answer_callback_query(call.id)
+    @bot.on_callback_query(filters.regex("^data:"))
+    def info_callback(client, call):
 
         page = int(call.data.split(":", 3)[1])
         user_id = int(call.data.split(":", 3)[2])
         char_name = call.data.split(":", 3)[3]
 
         if call.from_user.id != user_id:
-            return bot.answer_callback_query(
-                call.id,
+            return call.answer(
                 "This button is not for you.",
                 show_alert=True
             )
 
-        kb = types.InlineKeyboardMarkup()
+        kb = InlineKeyboardMarkup([])
 
         if page == 1:
-            kb.add(
-                types.InlineKeyboardButton(
-                    "Progress",
-                    callback_data=f"data:2:{user_id}:{char_name}"
-                ),
-                types.InlineKeyboardButton(
-                    "Stats",
-                    callback_data=f"data:3:{user_id}:{char_name}"
-                ),
-                types.InlineKeyboardButton(
-                    "Skills",
-                    callback_data=f"data:4:{user_id}:{char_name}"
-                )
+            kb = InlineKeyboardMarkup(
+                [[
+                    InlineKeyboardButton(
+                        "Progress",
+                        callback_data=f"data:2:{user_id}:{char_name}"
+                    ),
+                    InlineKeyboardButton(
+                        "Stats",
+                        callback_data=f"data:3:{user_id}:{char_name}"
+                    ),
+                    InlineKeyboardButton(
+                        "Skills",
+                        callback_data=f"data:4:{user_id}:{char_name}"
+                    )
+                ]]
             )
 
         elif page == 2:
-            kb.add(
-                types.InlineKeyboardButton(
-                    "Info",
-                    callback_data=f"data:1:{user_id}:{char_name}"
-                ),
-                types.InlineKeyboardButton(
-                    "Stats",
-                    callback_data=f"data:3:{user_id}:{char_name}"
-                ),
-                types.InlineKeyboardButton(
-                    "Skills",
-                    callback_data=f"data:4:{user_id}:{char_name}"
-                )
+            kb = InlineKeyboardMarkup(
+                [[
+                    InlineKeyboardButton(
+                        "Info",
+                        callback_data=f"data:1:{user_id}:{char_name}"
+                    ),
+                    InlineKeyboardButton(
+                        "Stats",
+                        callback_data=f"data:3:{user_id}:{char_name}"
+                    ),
+                    InlineKeyboardButton(
+                        "Skills",
+                        callback_data=f"data:4:{user_id}:{char_name}"
+                    )
+                ]]
             )
 
         elif page == 3:
-            kb.add(
-                types.InlineKeyboardButton(
-                    "Info",
-                    callback_data=f"data:1:{user_id}:{char_name}"
-                ),
-                types.InlineKeyboardButton(
-                    "Progress",
-                    callback_data=f"data:2:{user_id}:{char_name}"
-                ),
-                types.InlineKeyboardButton(
-                    "Skills",
-                    callback_data=f"data:4:{user_id}:{char_name}"
-                )
+            kb = InlineKeyboardMarkup(
+                [[
+                    InlineKeyboardButton(
+                        "Info",
+                        callback_data=f"data:1:{user_id}:{char_name}"
+                    ),
+                    InlineKeyboardButton(
+                        "Progress",
+                        callback_data=f"data:2:{user_id}:{char_name}"
+                    ),
+                    InlineKeyboardButton(
+                        "Skills",
+                        callback_data=f"data:4:{user_id}:{char_name}"
+                    )
+                ]]
             )
 
         elif page == 4:
-            kb.add(
-                types.InlineKeyboardButton(
-                    "Info",
-                    callback_data=f"data:1:{user_id}:{char_name}"
-                ),
-                types.InlineKeyboardButton(
-                    "Progress",
-                    callback_data=f"data:2:{user_id}:{char_name}"
-                ),
-                types.InlineKeyboardButton(
-                    "Stats",
-                    callback_data=f"data:3:{user_id}:{char_name}"
-                )
+            kb = InlineKeyboardMarkup(
+                [[
+                    InlineKeyboardButton(
+                        "Info",
+                        callback_data=f"data:1:{user_id}:{char_name}"
+                    ),
+                    InlineKeyboardButton(
+                        "Progress",
+                        callback_data=f"data:2:{user_id}:{char_name}"
+                    ),
+                    InlineKeyboardButton(
+                        "Stats",
+                        callback_data=f"data:3:{user_id}:{char_name}"
+                    )
+                ]]
             )
 
         data = utils.get_user(user_id)
@@ -99,9 +106,9 @@ def stats_callback(bot):
 
         msg = utils.load_stats_msg(page, char)
 
-        bot.edit_message_caption(
+        call.message.edit_caption(
             caption=msg,
-            chat_id=call.message.chat.id,
-            message_id=call.message.message_id,
             reply_markup=kb
         )
+
+        call.answer()

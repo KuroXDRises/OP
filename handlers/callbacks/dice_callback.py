@@ -1,6 +1,5 @@
-from telebot import types
+from pyrogram import filters
 import utils
-import random
 import html
 
 base_multiplier = 1.15
@@ -14,37 +13,34 @@ def get_multiplier(bet):
 
 
 def dice_callback(bot):
+    @bot.on_callback_query(filters.regex("^high:"))
+    def high(client, call):
+        handle_game(client, call, "high")
 
-    @bot.callback_query_handler(func=lambda call: call.data.startswith("high:"))
-    def high(call):
-        handle_game(bot, call, "high")
+    @bot.on_callback_query(filters.regex("^low:"))
+    def low(client, call):
+        handle_game(client, call, "low")
 
-    @bot.callback_query_handler(func=lambda call: call.data.startswith("low:"))
-    def low(call):
-        handle_game(bot, call, "low")
+    @bot.on_callback_query(filters.regex("^even:"))
+    def even(client, call):
+        handle_game(client, call, "even")
 
-    @bot.callback_query_handler(func=lambda call: call.data.startswith("even:"))
-    def even(call):
-        handle_game(bot, call, "even")
+    @bot.on_callback_query(filters.regex("^odd:"))
+    def odd(client, call):
+        handle_game(client, call, "odd")
 
-    @bot.callback_query_handler(func=lambda call: call.data.startswith("odd:"))
-    def odd(call):
-        handle_game(bot, call, "odd")
 
 def handle_game(bot, call, mode):
     bet = int(call.data.split(":")[1])
     user_id = int(call.data.split(":")[2])
 
     if call.from_user.id != user_id:
-        return
+        return call.answer("This button is not for you.", show_alert=True)
 
     user = utils.get_user(user_id)
 
     if not user or user["currency"]["beli"] < bet:
-        return bot.answer_callback_query(
-            call.id,
-            "Not enough Beli!"
-        )
+        return call.answer("Not enough Beli!", show_alert=True)
 
     utils.update_user(user_id, "beli", bet, mode="minus")
 
@@ -69,10 +65,7 @@ def handle_game(bot, call, mode):
     elif mode == "odd" and num % 2 != 0:
         win = True
 
-    bot.delete_message(
-        call.message.chat.id,
-        call.message.message_id
-    )
+    call.message.delete()
 
     if win:
         reward = int(bet * multiplier)
@@ -99,7 +92,7 @@ def handle_game(bot, call, mode):
 ❖ Fortune smiles upon fearless pirates.
 ❖ The sea grants treasure today.
 """,
-            parse_mode="HTML"
+            parse_mode="html"
         )
 
     else:
@@ -117,5 +110,7 @@ def handle_game(bot, call, mode):
 ❖ The sea takes what it wants.
 ❖ Return stronger, Captain.
 """,
-            parse_mode="HTML"
-            )
+            parse_mode="html"
+        )
+
+    call.answer()
