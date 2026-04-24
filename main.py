@@ -21,6 +21,8 @@ handlers.inventory_handler(bot)
 handlers.dice_handler(bot)
 handlers.dice_callback(bot)
 handlers.pay_handler(bot)
+handlers.spin_handler(bot)
+handlers.spin_callback(bot)
 
 if __name__ == "__main__":
     print("OnePieceSaga Bot Started...")

@@ -7,3 +7,5 @@ from handlers.commands.inv import *
 from handlers.commands.dice import *
 from handlers.callbacks.dice_callback import *
 from handlers.commands.pay import *
+from handlers.commands.spin import *
+from handlers.callbacks.spin_callback import *
