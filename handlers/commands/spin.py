@@ -1,6 +1,6 @@
 from pyrogram import filters
 from pyrogram import types
-from pyrogram.enums import ButtonStyle
+from pyrogram.enums import ButtonStyle, ChatType
 import asyncio
 import utils
 
@@ -9,10 +9,10 @@ def spin_handler(bot):
     async def spin_command(_, message):
         user_id = message.from_user.id
         data = utils.get_user(user_id)
-        if message.chat.type != "private":
-            return message.reply(
+        if message.chat.type != ChatType.PRIVATE:
+            return await message.reply(
                 "Spin only works in private chat. Message me privately to use this command."
-                )
+            )
         if data is None:
             return await message.reply_text(
                 "You are not registered yet."
@@ -54,7 +54,7 @@ tickets, and legendary rewards.
                         "5x",
                         callback_data=f"spin:5:{user_id}",
                         style=ButtonStyle.DEFAULT
-                    )
+                    ),
                     types.InlineKeyboardButton(
                         "10x",
                         callback_data=f"spin:10:{user_id}",

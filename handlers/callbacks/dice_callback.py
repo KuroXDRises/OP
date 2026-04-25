@@ -1,5 +1,7 @@
 from pyrogram import filters
 from pyrogram.enums import ParseMode
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.enums import ButtonStyle
 import utils
 import html
 
@@ -47,7 +49,7 @@ async def handle_game(bot, call, mode):
 
     if not user or user["currency"]["beli"] < bet:
         return await call.answer(
-            "Not enough Beli!",
+            "Not enough Beli.",
             show_alert=True
         )
 
@@ -62,6 +64,7 @@ async def handle_game(bot, call, mode):
     multiplier = get_multiplier(bet)
 
     name = html.escape(call.from_user.first_name)
+    mention = f'<a href="tg://user?id={call.from_user.id}">{name}</a>'
 
     win = False
 
@@ -76,6 +79,18 @@ async def handle_game(bot, call, mode):
 
     await call.message.delete()
 
+    again_kb = InlineKeyboardMarkup(
+        [
+            [
+            InlineKeyboardButton(
+                "↻ Repeat",
+                callback_data=f"{mode}:{bet}:{user_id}",
+                style=ButtonStyle.PRIMARY
+                )
+            ]
+        ]
+    )
+
     if win:
         reward = int(bet * multiplier)
 
@@ -89,37 +104,39 @@ async def handle_game(bot, call, mode):
         await bot.send_message(
             call.message.chat.id,
             f"""
-<b>✧ GRAND LINE JACKPOT ✧</b>
+<b>🎉 Lucky Roll</b>
 
-〘 Result 〙 <code>{num}</code>
-〘 Bet     〙 <code>{bet}</code> Beli
-〘 Pirate  〙 <a href="tg://user?id={call.from_user.id}">{name}</a>
+👤 By {mention}
 
-〘 Boost   〙 <code>{round(multiplier,2)}x</code>
-〘 Reward  〙 <code>{reward}</code> Beli
+🎲 Dice: <code>{num}</code>
+💰 Bet: <code>{bet}</code> Beli
+⚡ Boost: <code>{round(multiplier,2)}x</code>
+🏆 Won: <code>{reward}</code> Beli
 
-❖ Fortune smiles upon fearless pirates.
-❖ The sea grants treasure today.
+Nice win, Captain.
+Try again below.
 """,
-            parse_mode=ParseMode.HTML
+            parse_mode=ParseMode.HTML,
+            reply_markup=again_kb
         )
 
     else:
         await bot.send_message(
             call.message.chat.id,
             f"""
-<b>✧ STORM OF DEFEAT ✧</b>
+<b>🌊 Tough Luck</b>
 
-〘 Result 〙 <code>{num}</code>
-〘 Lost    〙 <code>{bet}</code> Beli
-〘 Pirate  〙 <a href="tg://user?id={call.from_user.id}">{name}</a>
+👤 By {mention}
 
-〘 Boost   〙 <code>{round(multiplier,2)}x</code>
+🎲 Dice: <code>{num}</code>
+💸 Lost: <code>{bet}</code> Beli
+⚡ Boost: <code>{round(multiplier,2)}x</code>
 
-❖ The sea takes what it wants.
-❖ Return stronger, Captain.
+Better luck next roll.
+Try again below.
 """,
-            parse_mode=ParseMode.HTML
+            parse_mode=ParseMode.HTML,
+            reply_markup=again_kb
         )
 
     await call.answer()

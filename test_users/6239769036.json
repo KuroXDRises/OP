@@ -56,9 +56,9 @@
     "revive_food": 0
   },
   "currency": {
-    "beli": 0,
-    "neo_fragments": 10,
-    "devil_tickets": 5
+    "beli": 523,
+    "neo_fragments": 30,
+    "devil_tickets": 7
   },
   "main_team": 1,
   "teams": {

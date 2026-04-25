@@ -70,25 +70,21 @@ def dice_handler(bot):
                 [
                     InlineKeyboardButton(
                         "High",
-                        callback_data=f"high:{bet}:{user_id}",
-                        style=ButtonStyle.PRIMARY
+                        callback_data=f"high:{bet}:{user_id}"
                     ),
                     InlineKeyboardButton(
                         "Low",
-                        callback_data=f"low:{bet}:{user_id}",
-                        style=ButtonStyle.PRIMARY
+                        callback_data=f"low:{bet}:{user_id}"
                     )
                 ],
                 [
                     InlineKeyboardButton(
                         "Even",
-                        callback_data=f"even:{bet}:{user_id}",
-                        style=ButtonStyle.SUCCESS
+                        callback_data=f"even:{bet}:{user_id}"
                     ),
                     InlineKeyboardButton(
                         "Odd",
-                        callback_data=f"odd:{bet}:{user_id}",
-                        style=ButtonStyle.DANGER
+                        callback_data=f"odd:{bet}:{user_id}"
                     )
                 ]
             ]

@@ -1,5 +1,6 @@
 import random
 import math
+import utils
 
 currency = {
     "beli": {
@@ -19,10 +20,13 @@ currency = {
     }
 }
 
+
 def get_random_item():
     total_chance = sum(data["chance"] for data in currency.values())
+
     roll = random.uniform(1, total_chance)
     current = 0
+
     for key, data in currency.items():
         current += data["chance"]
 
@@ -30,7 +34,9 @@ def get_random_item():
             low = data["amount"][0]
             high = data["amount"][1]
 
-            amount = math.floor(random.uniform(low, high + 1))
+            amount = math.floor(
+                random.uniform(low, high + 1)
+            )
 
             return {
                 "item": data["item"],
@@ -38,8 +44,10 @@ def get_random_item():
                 "chance": data["chance"]
             }
 
+
 def sort_rewards(rewards):
     merged = {}
+
     for reward in rewards:
         item = reward["item"]
 
@@ -49,45 +57,74 @@ def sort_rewards(rewards):
                 "amount": 0,
                 "chance": reward["chance"]
             }
+
         merged[item]["amount"] += reward["amount"]
+
     return sorted(
         merged.values(),
         key=lambda x: x["chance"],
         reverse=True
     )
 
+
 def format_rewards(rewards):
     text = ""
+
     for r in rewards:
-        text += f"{r['item']:<18} x {r['amount']}\n"
+        text += f"➩ {r['item']:<18} x {r['amount']}\n"
+
     return text
 
+
+def spin_rewards(spins):
+    rewards = [
+        get_random_item()
+        for _ in range(spins)
+    ]
+
+    return sort_rewards(rewards)
+
+
+def reward_message(rewards):
+    return format_rewards(rewards)
+
+
 def one_spin():
-    rewards = [get_random_item()]
-    return format_rewards(sort_rewards(rewards))
+    rewards = spin_rewards(1)
+    return reward_message(rewards)
+
 
 def five_spin():
-    rewards = [get_random_item() for _ in range(5)]
-    return format_rewards(sort_rewards(rewards))
+    rewards = spin_rewards(5)
+    return reward_message(rewards)
+
 
 def ten_spin():
-    rewards = [get_random_item() for _ in range(10)]
-    return format_rewards(sort_rewards(rewards))
+    rewards = spin_rewards(10)
+    return reward_message(rewards)
 
-def give_spin_rewards(user_id, rewards):
+
+def add_spin_rewards(user_id, rewards):
+
     data = utils.get_user(user_id)
+
     if data is None:
         return False
+
     for reward in rewards:
+
         item = reward["item"]
         amount = reward["amount"]
+
         if item in data["currency"]:
             data["currency"][item] += amount
+
         elif item in data["inv"]:
             data["inv"][item] += amount
+
         else:
             data["inv"][item] = amount
+
     utils.save_user(data)
+
     return True
-    
-print(ten_spin())
