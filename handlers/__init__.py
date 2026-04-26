@@ -12,3 +12,4 @@ from handlers.callbacks.spin_callback import *
 from handlers.commands.mychar import *
 from handlers.callbacks.mychar_callback import *
 from handlers.callbacks.cancle_task import *
+from handlers.commands.add import *

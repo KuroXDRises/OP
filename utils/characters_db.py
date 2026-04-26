@@ -106,3 +106,18 @@ def load_stats_msg(value: int, char):
     }
 
     return messages.get(value, messages[1])
+
+def get_char(char_name):
+    """
+    Search character by name from database.
+    Returns character dict if found else None
+    """
+    from db.characters import characters
+    return next(
+        (
+            char.copy()
+            for char in characters
+            if char["name"].lower() == char_name.lower()
+        ),
+        None
+    )
