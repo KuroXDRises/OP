@@ -41,7 +41,6 @@ async def create_profile_picture(bot, data):
         draw_mask.ellipse((0, 0, 220, 220), fill=255)
 
         img.putalpha(mask)
-        bg.paste(img, (310, 220), img)
 
     draw = ImageDraw.Draw(bg)
 
