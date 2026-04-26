@@ -50,6 +50,10 @@ def create_user_structure(user, char):
         "teams": build_user_teams(),
         
         "ship": "Not Build",
+        
+        "sort": "level",
+        "display": "level",
+        "order": "ascending",
 
         "wins": 0,
         "loss": 0,

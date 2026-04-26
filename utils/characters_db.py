@@ -11,7 +11,7 @@ def compact_character_data(character):
         "pic": char["pic"],
         "level": char["level"],
         "xp": char["xp"],
-        "max_xp": char["max_xp"],
+        "max_xp": 2700,
         "bounty": char["bounty"],
         "stamina": 78000,
         "hp": char["hp"],

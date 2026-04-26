@@ -1,5 +1,6 @@
 from pyrogram import filters, Client
 from pyrogram.types import *
+from pyrogram.enums import *
 import utils
 from db.starters import *
 
@@ -7,7 +8,7 @@ def start_handler(bot):
     @bot.on_message(filters.command("start"), group=1)
     async def start_command(client, message):
         user_id = message.from_user.id
-        if message.chat.type != "private":
+        if message.chat.type in [ChatType.GROUP, ChatType.SUPERGROUP]:
             return await message.reply(
                 "🏴‍☠️ /start only works in private chat.\n"
                 "Please message me privately to begin your pirate journey."
