@@ -35,7 +35,7 @@ def create_sorted_char_data(user, sort_by, display_by, mode="descending"):
     text = "<b><i>🏴‍☠️ Your Characters Panel</i></b>\n\n"
     for i, char in enumerate(new_chars, start=1):
         display = char.get(display_by, 0)
-        text += f'<b>{i}. {char["name"]}</b> | {display}\n'
+        text += f'<b>{i}. {char["name"]}</b>\n{display_by.capitalize()} | {display}\n\n'
     return text
 def create_mychar_keyboard(user_id):
     kb = types.InlineKeyboardMarkup(
