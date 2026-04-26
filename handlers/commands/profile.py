@@ -52,14 +52,14 @@ async def create_profile_picture(bot, data):
         font2 = ImageFont.load_default()
 
     draw.text(
-        (305, 470),
+        (305, 510),
         str(data["name"]),
         font=font1,
         fill="white"
     )
 
     draw.text(
-        (355, 565),
+        (355, 620),
         str(data["bounty"]),
         font=font2,
         fill="white"
