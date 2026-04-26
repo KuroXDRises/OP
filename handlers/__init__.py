@@ -13,3 +13,4 @@ from handlers.commands.mychar import *
 from handlers.callbacks.mychar_callback import *
 from handlers.callbacks.cancle_task import *
 from handlers.commands.add import *
+from handlers.commands.profile import *
