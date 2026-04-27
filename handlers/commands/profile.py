@@ -212,7 +212,15 @@ def profile_handler(bot):
             )
 
         img = await create_profile_picture(bot, data)
-
+        
+        await message.reply(
+            "Getting your profile data from Marines database..."
+            )
+        await asyncio.sleep(
+            2
+            )
+        await message.delete()
+        
         await message.reply_photo(
             photo=img,
             caption=stats_msg(data),

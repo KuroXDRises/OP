@@ -28,6 +28,7 @@ handlers.my_char_callbacks(bot)
 handlers.cancel_tasks_callback(bot)
 handlers.add_char_handler(bot)
 handlers.profile_handler(bot)
+handlers.lb_handler(bot)
 
 if __name__ == "__main__":
     print("OnePieceSaga Bot Started...")

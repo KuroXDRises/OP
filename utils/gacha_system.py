@@ -124,6 +124,9 @@ def add_spin_rewards(user_id, rewards):
 
         else:
             data["inv"][item] = amount
+    
+    data["last_transaction"] = f"+ {rewards}"
+    data["last_spin"] = f"+ {rewards}"
 
     utils.save_user(data)
 
