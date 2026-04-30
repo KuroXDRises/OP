@@ -1,5 +1,5 @@
 {
-  "name": "・ᴍɪᴋᴇʏ.♡",
+  "name": "・ᴍɪᴋᴇʏ.♡ @raika",
   "username": null,
   "_id": 6843478524,
   "level": 1,
@@ -15,7 +15,7 @@
       "pic": "https://i.ibb.co/yn202TbK/157e8c360606.jpg",
       "level": 1,
       "xp": 0,
-      "max_xp": 2700,
+      "max_xp": 100,
       "bounty": 0,
       "stamina": 78000,
       "hp": 140,
@@ -56,8 +56,8 @@
     "revive_food": 0
   },
   "currency": {
-    "beli": 100007281,
-    "neo_fragments": 10,
+    "beli": 36,
+    "neo_fragments": 9,
     "devil_tickets": 5
   },
   "main_team": 1,
@@ -80,11 +80,11 @@
   "last_daily": null,
   "last_transaction": null,
   "last_battle": null,
-  "last_spin": null,
+  "last_spin": "[{'type': 'currency', 'item': 'beli', 'amount': 836, 'chance': 55}]",
   "title": "New Pirate",
   "crew": null,
   "region": "East Blue",
   "story_progress": 1,
   "premium": false,
-  "created_at": "2026-04-26T13:08:51.662160"
+  "created_at": "2026-04-30T05:14:19.428516"
 }

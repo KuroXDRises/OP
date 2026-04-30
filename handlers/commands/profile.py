@@ -12,6 +12,7 @@ from PIL import (
     ImageFont
     )
 import os
+import asyncio
 import utils
 
 

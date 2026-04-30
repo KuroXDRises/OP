@@ -1,5 +1,5 @@
 {
-  "name": "Kᴜʀᴏ Rᴀɪᴊɪɴ @raika",
+  "name": "Kuro @raika",
   "username": null,
   "_id": 6239769036,
   "level": 1,
@@ -15,7 +15,7 @@
       "pic": "https://i.ibb.co/yn202TbK/157e8c360606.jpg",
       "level": 1,
       "xp": 0,
-      "max_xp": 2700,
+      "max_xp": 100,
       "bounty": 0,
       "stamina": 78000,
       "hp": 140,
@@ -42,6 +42,40 @@
         "accuracy": 80,
         "power": 85
       }
+    },
+    {
+      "_id": 3012,
+      "name": "Usopp",
+      "pic": "https://i.postimg.cc/gmZ9dpYJ/03e9f629-834f-438f-a9a3-d5d01989034d.jpg?dl=1",
+      "level": 1,
+      "xp": 0,
+      "max_xp": 100,
+      "bounty": 0,
+      "stamina": 78000,
+      "hp": 150,
+      "max_hp": 150,
+      "attack": 102,
+      "defense": 80,
+      "speed": 108,
+      "crit_rate": 12,
+      "skill_1": {
+        "name": "Pop Shot",
+        "damage": 44,
+        "accuracy": 96,
+        "power": 66
+      },
+      "skill_2": {
+        "name": "Explode Seed",
+        "damage": 64,
+        "accuracy": 87,
+        "power": 84
+      },
+      "ultimate": {
+        "name": "Sniper King Blast",
+        "damage": 95,
+        "accuracy": 80,
+        "power": 112
+      }
     }
   ],
   "fav_char": null,
@@ -56,9 +90,9 @@
     "revive_food": 0
   },
   "currency": {
-    "beli": 47,
-    "neo_fragments": 10,
-    "devil_tickets": 5
+    "beli": 14791,
+    "neo_fragments": 33,
+    "devil_tickets": 8
   },
   "main_team": 1,
   "teams": {
@@ -70,8 +104,8 @@
     "6": []
   },
   "ship": "Not Build",
-  "sort": "level",
-  "display": "level",
+  "sort": "stamina",
+  "display": "stamina",
   "order": "ascending",
   "wins": 0,
   "loss": 0,
@@ -80,11 +114,11 @@
   "last_daily": null,
   "last_transaction": null,
   "last_battle": null,
-  "last_spin": null,
+  "last_spin": "[{'type': 'character', 'data': {'_id': 3012, 'pic': 'https://i.postimg.cc/gmZ9dpYJ/03e9f629-834f-438f-a9a3-d5d01989034d.jpg?dl=1', 'name': 'Usopp', 'anime': 'One Piece', 'rarity': 'Rare', 'type': 'Sniper', 'element': 'Plant', 'bounty': 0, 'level': 1, 'xp': 0, 'max_xp': 100, 'hp': 150, 'max_hp': 150, 'attack': 102, 'defense': 80, 'speed': 108, 'crit_rate': 12, 'skill_1': {'name': 'Pop Shot', 'damage': 44, 'accuracy': 96, 'power': 66}, 'skill_2': {'name': 'Explode Seed', 'damage': 64, 'accuracy': 87, 'power': 84}, 'ultimate': {'name': 'Sniper King Blast', 'damage': 95, 'accuracy': 80, 'power': 112}}}]",
   "title": "New Pirate",
   "crew": null,
   "region": "East Blue",
   "story_progress": 1,
   "premium": false,
-  "created_at": "2026-04-26T15:22:57.684404"
+  "created_at": "2026-04-30T05:09:37.517239"
 }

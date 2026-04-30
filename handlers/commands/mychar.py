@@ -29,8 +29,7 @@ def create_sorted_char_data(user, sort_by, display_by, mode="descending"):
     else:
         new_chars = sorted(
             chars,
-            key=lambda x:
-                x.get(sort_by, 0)
+            key=lambda x: x.get(sort_by, 0)
         )
     text = "<b><i>🏴‍☠️ Your Characters Panel</i></b>\n\n"
     for i, char in enumerate(new_chars, start=1):

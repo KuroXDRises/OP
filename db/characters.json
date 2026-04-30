@@ -1,0 +1,594 @@
+[
+{
+  "_id": 3001,
+  "pic": "https://i.ibb.co/yn202TbK/157e8c360606.jpg",
+  "name": "Johnny",
+  "anime": "One Piece",
+  "rarity": "Common",
+  "type": "Fighter",
+  "element": "Slash",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 140,
+  "max_hp": 140,
+  "attack": 95,
+  "defense": 95,
+  "speed": 100,
+  "crit_rate": 8,
+  "skill_1": {
+    "name": "Basic Slash",
+    "damage": 40,
+    "accuracy": 90,
+    "power": 60
+  },
+  "skill_2": {
+    "name": "Rush Attack",
+    "damage": 60,
+    "accuracy": 85,
+    "power": 70
+  },
+  "ultimate": {
+    "name": "Dual Strike",
+    "damage": 80,
+    "accuracy": 80,
+    "power": 85
+  }
+},
+{
+  "_id": 3002,
+  "pic": "https://i.ibb.co/5WQqKTqj/a23c22056691.jpg",
+  "name": "Yosaku",
+  "anime": "One Piece",
+  "rarity": "Common",
+  "type": "Fighter",
+  "element": "Slash",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 170,
+  "max_hp": 170,
+  "attack": 85,
+  "defense": 85,
+  "speed": 90,
+  "crit_rate": 7,
+  "skill_1": {
+    "name": "Quick Cut",
+    "damage": 35,
+    "accuracy": 92,
+    "power": 55
+  },
+  "skill_2": {
+    "name": "Heavy Swing",
+    "damage": 55,
+    "accuracy": 84,
+    "power": 75
+  },
+  "ultimate": {
+    "name": "Hunter Combo",
+    "damage": 78,
+    "accuracy": 78,
+    "power": 90
+  }
+},
+{
+  "_id": 3003,
+  "pic": "https://i.ibb.co/35qRBM81/57a0fb2480ac.jpg",
+  "name": "Charlotte Flampe",
+  "anime": "One Piece",
+  "rarity": "Common",
+  "type": "Support",
+  "element": "Trick",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 110,
+  "max_hp": 110,
+  "attack": 88,
+  "defense": 88,
+  "speed": 170,
+  "crit_rate": 10,
+  "skill_1": {
+    "name": "Needle Shot",
+    "damage": 30,
+    "accuracy": 95,
+    "power": 50
+  },
+  "skill_2": {
+    "name": "Sneaky Hit",
+    "damage": 50,
+    "accuracy": 90,
+    "power": 65
+  },
+  "ultimate": {
+    "name": "Disrupt Tactics",
+    "damage": 70,
+    "accuracy": 85,
+    "power": 80
+  }
+},
+{
+  "_id": 3004,
+  "pic": "https://i.postimg.cc/pxsYs586/13044afd-594a-4b75-a1d8-0432457d54d3.jpg?dl=1",
+  "name": "Helmeppo",
+  "anime": "One Piece",
+  "rarity": "Common",
+  "type": "Fighter",
+  "element": "Slash",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 150,
+  "max_hp": 150,
+  "attack": 90,
+  "defense": 85,
+  "speed": 92,
+  "crit_rate": 8,
+  "skill_1": {
+    "name": "Blade Jab",
+    "damage": 38,
+    "accuracy": 92,
+    "power": 58
+  },
+  "skill_2": {
+    "name": "Royal Swing",
+    "damage": 56,
+    "accuracy": 85,
+    "power": 72
+  },
+  "ultimate": {
+    "name": "Elite Slash",
+    "damage": 80,
+    "accuracy": 80,
+    "power": 88
+  }
+},
+{
+  "_id": 3005,
+  "pic": "https://i.postimg.cc/X3PxVyJ8/f6d603f7-9e57-4567-a3f5-88e4d23079f7.jpg?dl=1",
+  "name": "Morgan",
+  "anime": "One Piece",
+  "rarity": "Common",
+  "type": "Tank",
+  "element": "Steel",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 220,
+  "max_hp": 220,
+  "attack": 105,
+  "defense": 115,
+  "speed": 60,
+  "crit_rate": 5,
+  "skill_1": {
+    "name": "Axe Chop",
+    "damage": 45,
+    "accuracy": 88,
+    "power": 68
+  },
+  "skill_2": {
+    "name": "Iron Crash",
+    "damage": 62,
+    "accuracy": 82,
+    "power": 80
+  },
+  "ultimate": {
+    "name": "Tyrant Breaker",
+    "damage": 92,
+    "accuracy": 76,
+    "power": 100
+  }
+},
+{
+  "_id": 3006,
+  "pic": "https://i.postimg.cc/WjNxDrs3/c715e4a0-d4db-49f6-a094-f333c7f2cb8b.jpg?dl=1",
+  "name": "Alvida",
+  "anime": "One Piece",
+  "rarity": "Common",
+  "type": "Fighter",
+  "element": "Blunt",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 180,
+  "max_hp": 180,
+  "attack": 95,
+  "defense": 88,
+  "speed": 70,
+  "crit_rate": 7,
+  "skill_1": {
+    "name": "Iron Mace",
+    "damage": 42,
+    "accuracy": 89,
+    "power": 63
+  },
+  "skill_2": {
+    "name": "Heavy Smash",
+    "damage": 60,
+    "accuracy": 83,
+    "power": 78
+  },
+  "ultimate": {
+    "name": "Pirate Crusher",
+    "damage": 86,
+    "accuracy": 78,
+    "power": 95
+  }
+},
+{
+  "_id": 3007,
+  "pic": "https://iili.io/BsIMgfV.jpg",
+  "name": "Sham",
+  "anime": "One Piece",
+  "rarity": "Common",
+  "type": "Assassin",
+  "element": "Trick",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 130,
+  "max_hp": 130,
+  "attack": 88,
+  "defense": 72,
+  "speed": 118,
+  "crit_rate": 11,
+  "skill_1": {
+    "name": "Sneak Cut",
+    "damage": 36,
+    "accuracy": 94,
+    "power": 55
+  },
+  "skill_2": {
+    "name": "Shadow Dash",
+    "damage": 54,
+    "accuracy": 87,
+    "power": 70
+  },
+  "ultimate": {
+    "name": "Silent Execution",
+    "damage": 82,
+    "accuracy": 80,
+    "power": 90
+  }
+},
+{
+  "_id": 3008,
+  "pic": "https://iili.io/BsIMSiQ.jpg",
+  "name": "Buchi",
+  "anime": "One Piece",
+  "rarity": "Common",
+  "type": "Tank",
+  "element": "Claw",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 205,
+  "max_hp": 205,
+  "attack": 92,
+  "defense": 100,
+  "speed": 74,
+  "crit_rate": 6,
+  "skill_1": {
+    "name": "Wild Swipe",
+    "damage": 40,
+    "accuracy": 90,
+    "power": 60
+  },
+  "skill_2": {
+    "name": "Beast Rush",
+    "damage": 58,
+    "accuracy": 84,
+    "power": 76
+  },
+  "ultimate": {
+    "name": "Cat Brothers Fury",
+    "damage": 88,
+    "accuracy": 78,
+    "power": 94
+  }
+},
+{
+  "_id": 3009,
+  "pic": "https://iili.io/BsIM8Wx.jpg",
+  "name": "Patty",
+  "anime": "One Piece",
+  "rarity": "Common",
+  "type": "Fighter",
+  "element": "Kick",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 170,
+  "max_hp": 170,
+  "attack": 94,
+  "defense": 84,
+  "speed": 95,
+  "crit_rate": 8,
+  "skill_1": {
+    "name": "Kitchen Kick",
+    "damage": 39,
+    "accuracy": 91,
+    "power": 59
+  },
+  "skill_2": {
+    "name": "Chef Combo",
+    "damage": 57,
+    "accuracy": 86,
+    "power": 73
+  },
+  "ultimate": {
+    "name": "Baratie Barrage",
+    "damage": 84,
+    "accuracy": 80,
+    "power": 91
+  }
+},
+{
+  "_id": 3010,
+  "pic": "https://iili.io/BsIMr0B.jpg",
+  "name": "Carne",
+  "anime": "One Piece",
+  "rarity": "Common",
+  "type": "Tank",
+  "element": "Punch",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 195,
+  "max_hp": 195,
+  "attack": 90,
+  "defense": 96,
+  "speed": 78,
+  "crit_rate": 7,
+  "skill_1": {
+    "name": "Meat Hook",
+    "damage": 41,
+    "accuracy": 90,
+    "power": 61
+  },
+  "skill_2": {
+    "name": "Cook Slam",
+    "damage": 59,
+    "accuracy": 84,
+    "power": 77
+  },
+  "ultimate": {
+    "name": "Grand Feast Smash",
+    "damage": 87,
+    "accuracy": 79,
+    "power": 93
+  }
+},
+{
+  "_id": 3011,
+  "pic": "https://i.postimg.cc/YpkBbPB7/1ad842f4-1c28-4409-92b4-e990f94f43b8.jpg?dl=1",
+  "name": "Nami",
+  "anime": "One Piece",
+  "rarity": "Rare",
+  "type": "Support",
+  "element": "Weather",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 145,
+  "max_hp": 145,
+  "attack": 98,
+  "defense": 82,
+  "speed": 122,
+  "crit_rate": 10,
+  "skill_1": {
+    "name": "Clima Strike",
+    "damage": 42,
+    "accuracy": 94,
+    "power": 65
+  },
+  "skill_2": {
+    "name": "Thunder Tempo",
+    "damage": 62,
+    "accuracy": 88,
+    "power": 82
+  },
+  "ultimate": {
+    "name": "Storm Queen",
+    "damage": 92,
+    "accuracy": 82,
+    "power": 108
+  }
+},
+{
+  "_id": 3012,
+  "pic": "https://i.postimg.cc/gmZ9dpYJ/03e9f629-834f-438f-a9a3-d5d01989034d.jpg?dl=1",
+  "name": "Usopp",
+  "anime": "One Piece",
+  "rarity": "Rare",
+  "type": "Sniper",
+  "element": "Plant",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 150,
+  "max_hp": 150,
+  "attack": 102,
+  "defense": 80,
+  "speed": 108,
+  "crit_rate": 12,
+  "skill_1": {
+    "name": "Pop Shot",
+    "damage": 44,
+    "accuracy": 96,
+    "power": 66
+  },
+  "skill_2": {
+    "name": "Explode Seed",
+    "damage": 64,
+    "accuracy": 87,
+    "power": 84
+  },
+  "ultimate": {
+    "name": "Sniper King Blast",
+    "damage": 95,
+    "accuracy": 80,
+    "power": 112
+  }
+},
+{
+  "_id": 3015,
+  "pic": "https://i.postimg.cc/Zm7Xdnnr/5bd89ceb-90a0-448d-8d85-fe84d07d79d4.jpg?dl=1",
+  "name": "Cabaji",
+  "anime": "One Piece",
+  "rarity": "Rare",
+  "type": "Assassin",
+  "element": "Trick",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 142,
+  "max_hp": 142,
+  "attack": 104,
+  "defense": 76,
+  "speed": 128,
+  "crit_rate": 13,
+  "skill_1": {
+    "name": "Spin Blade",
+    "damage": 45,
+    "accuracy": 94,
+    "power": 67
+  },
+  "skill_2": {
+    "name": "Circus Dash",
+    "damage": 66,
+    "accuracy": 86,
+    "power": 85
+  },
+  "ultimate": {
+    "name": "Acrobat Doom",
+    "damage": 96,
+    "accuracy": 81,
+    "power": 113
+  }
+},
+{
+  "_id": 3016,
+  "pic": "https://i.postimg.cc/PdySnV85/c7b56a2f-d5c2-44f1-a6d0-b4f0f75a84cd.jpg?dl=1",
+  "name": "Mohji",
+  "anime": "One Piece",
+  "rarity": "Common",
+  "type": "Summoner",
+  "element": "Beast",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 180,
+  "max_hp": 180,
+  "attack": 92,
+  "defense": 84,
+  "speed": 88,
+  "crit_rate": 8,
+  "skill_1": {
+    "name": "Whip Strike",
+    "damage": 40,
+    "accuracy": 91,
+    "power": 60
+  },
+  "skill_2": {
+    "name": "Lion Rush",
+    "damage": 60,
+    "accuracy": 84,
+    "power": 78
+  },
+  "ultimate": {
+    "name": "Richie Rampage",
+    "damage": 88,
+    "accuracy": 78,
+    "power": 96
+  }
+},
+{
+  "_id": 3017,
+  "pic": "https://i.postimg.cc/kqFcWYwP/8d0bbd4b-2865-4cb7-b4e7-9f003f006fce.jpg?dl=1",
+  "name": "Kuroobi",
+  "anime": "One Piece",
+  "rarity": "Epic",
+  "type": "Tank",
+  "element": "Water",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 230,
+  "max_hp": 230,
+  "attack": 108,
+  "defense": 112,
+  "speed": 78,
+  "crit_rate": 7,
+  "skill_1": {
+    "name": "Fishman Palm",
+    "damage": 48,
+    "accuracy": 90,
+    "power": 72
+  },
+  "skill_2": {
+    "name": "Ocean Slam",
+    "damage": 70,
+    "accuracy": 84,
+    "power": 92
+  },
+  "ultimate": {
+    "name": "Sea Beast Crush",
+    "damage": 102,
+    "accuracy": 78,
+    "power": 120
+  }
+},
+{
+  "_id": 3018,
+  "pic": "https://i.postimg.cc/nVf4DqDZ/d41e82d4-ba6f-49b8-8bab-1a01615dd536.jpg?dl=1",
+  "name": "Chew",
+  "anime": "One Piece",
+  "rarity": "Rare",
+  "type": "Sniper",
+  "element": "Water",
+  "bounty": 0,
+  "level": 1,
+  "xp": 0,
+  "max_xp": 100,
+  "hp": 165,
+  "max_hp": 165,
+  "attack": 101,
+  "defense": 82,
+  "speed": 96,
+  "crit_rate": 10,
+  "skill_1": {
+    "name": "Water Gun",
+    "damage": 43,
+    "accuracy": 94,
+    "power": 64
+  },
+  "skill_2": {
+    "name": "Bubble Burst",
+    "damage": 63,
+    "accuracy": 87,
+    "power": 83
+  },
+  "ultimate": {
+    "name": "Ocean Cannon",
+    "damage": 94,
+    "accuracy": 81,
+    "power": 110
+  }
+}
+]

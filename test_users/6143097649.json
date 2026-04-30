@@ -15,7 +15,7 @@
       "pic": "https://i.ibb.co/yn202TbK/157e8c360606.jpg",
       "level": 1,
       "xp": 0,
-      "max_xp": 2700,
+      "max_xp": 100,
       "bounty": 0,
       "stamina": 78000,
       "hp": 140,
@@ -42,6 +42,176 @@
         "accuracy": 80,
         "power": 85
       }
+    },
+    {
+      "_id": 3005,
+      "name": "Morgan",
+      "pic": "https://i.postimg.cc/X3PxVyJ8/f6d603f7-9e57-4567-a3f5-88e4d23079f7.jpg?dl=1",
+      "level": 1,
+      "xp": 0,
+      "max_xp": 100,
+      "bounty": 0,
+      "stamina": 78000,
+      "hp": 220,
+      "max_hp": 220,
+      "attack": 105,
+      "defense": 115,
+      "speed": 60,
+      "crit_rate": 5,
+      "skill_1": {
+        "name": "Axe Chop",
+        "damage": 45,
+        "accuracy": 88,
+        "power": 68
+      },
+      "skill_2": {
+        "name": "Iron Crash",
+        "damage": 62,
+        "accuracy": 82,
+        "power": 80
+      },
+      "ultimate": {
+        "name": "Tyrant Breaker",
+        "damage": 92,
+        "accuracy": 76,
+        "power": 100
+      }
+    },
+    {
+      "_id": 3015,
+      "name": "Cabaji",
+      "pic": "https://i.postimg.cc/Zm7Xdnnr/5bd89ceb-90a0-448d-8d85-fe84d07d79d4.jpg?dl=1",
+      "level": 1,
+      "xp": 0,
+      "max_xp": 100,
+      "bounty": 0,
+      "stamina": 78000,
+      "hp": 142,
+      "max_hp": 142,
+      "attack": 104,
+      "defense": 76,
+      "speed": 128,
+      "crit_rate": 13,
+      "skill_1": {
+        "name": "Spin Blade",
+        "damage": 45,
+        "accuracy": 94,
+        "power": 67
+      },
+      "skill_2": {
+        "name": "Circus Dash",
+        "damage": 66,
+        "accuracy": 86,
+        "power": 85
+      },
+      "ultimate": {
+        "name": "Acrobat Doom",
+        "damage": 96,
+        "accuracy": 81,
+        "power": 113
+      }
+    },
+    {
+      "_id": 3015,
+      "name": "Cabaji",
+      "pic": "https://i.postimg.cc/Zm7Xdnnr/5bd89ceb-90a0-448d-8d85-fe84d07d79d4.jpg?dl=1",
+      "level": 1,
+      "xp": 0,
+      "max_xp": 100,
+      "bounty": 0,
+      "stamina": 78000,
+      "hp": 142,
+      "max_hp": 142,
+      "attack": 104,
+      "defense": 76,
+      "speed": 128,
+      "crit_rate": 13,
+      "skill_1": {
+        "name": "Spin Blade",
+        "damage": 45,
+        "accuracy": 94,
+        "power": 67
+      },
+      "skill_2": {
+        "name": "Circus Dash",
+        "damage": 66,
+        "accuracy": 86,
+        "power": 85
+      },
+      "ultimate": {
+        "name": "Acrobat Doom",
+        "damage": 96,
+        "accuracy": 81,
+        "power": 113
+      }
+    },
+    {
+      "_id": 3011,
+      "name": "Nami",
+      "pic": "https://i.postimg.cc/YpkBbPB7/1ad842f4-1c28-4409-92b4-e990f94f43b8.jpg?dl=1",
+      "level": 1,
+      "xp": 0,
+      "max_xp": 100,
+      "bounty": 0,
+      "stamina": 78000,
+      "hp": 145,
+      "max_hp": 145,
+      "attack": 98,
+      "defense": 82,
+      "speed": 122,
+      "crit_rate": 10,
+      "skill_1": {
+        "name": "Clima Strike",
+        "damage": 42,
+        "accuracy": 94,
+        "power": 65
+      },
+      "skill_2": {
+        "name": "Thunder Tempo",
+        "damage": 62,
+        "accuracy": 88,
+        "power": 82
+      },
+      "ultimate": {
+        "name": "Storm Queen",
+        "damage": 92,
+        "accuracy": 82,
+        "power": 108
+      }
+    },
+    {
+      "_id": 3012,
+      "name": "Usopp",
+      "pic": "https://i.postimg.cc/gmZ9dpYJ/03e9f629-834f-438f-a9a3-d5d01989034d.jpg?dl=1",
+      "level": 1,
+      "xp": 0,
+      "max_xp": 100,
+      "bounty": 0,
+      "stamina": 78000,
+      "hp": 150,
+      "max_hp": 150,
+      "attack": 102,
+      "defense": 80,
+      "speed": 108,
+      "crit_rate": 12,
+      "skill_1": {
+        "name": "Pop Shot",
+        "damage": 44,
+        "accuracy": 96,
+        "power": 66
+      },
+      "skill_2": {
+        "name": "Explode Seed",
+        "damage": 64,
+        "accuracy": 87,
+        "power": 84
+      },
+      "ultimate": {
+        "name": "Sniper King Blast",
+        "damage": 95,
+        "accuracy": 80,
+        "power": 112
+      }
     }
   ],
   "fav_char": null,
@@ -56,9 +226,9 @@
     "revive_food": 0
   },
   "currency": {
-    "beli": 82,
-    "neo_fragments": 10,
-    "devil_tickets": 5
+    "beli": 70,
+    "neo_fragments": 35,
+    "devil_tickets": 8
   },
   "main_team": 1,
   "teams": {
@@ -71,7 +241,7 @@
   },
   "ship": "Not Build",
   "sort": "level",
-  "display": "level",
+  "display": "attack",
   "order": "ascending",
   "wins": 0,
   "loss": 0,
@@ -80,11 +250,11 @@
   "last_daily": null,
   "last_transaction": null,
   "last_battle": null,
-  "last_spin": null,
+  "last_spin": "[{'type': 'currency', 'item': 'neo_fragments', 'amount': 6, 'chance': 20}]",
   "title": "New Pirate",
   "crew": null,
   "region": "East Blue",
   "story_progress": 1,
   "premium": false,
-  "created_at": "2026-04-26T10:04:24.157397"
+  "created_at": "2026-04-30T05:11:13.469243"
 }

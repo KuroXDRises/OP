@@ -2,8 +2,6 @@ from pyrogram import filters
 from pyrogram.types import *
 from pyrogram.enums import ParseMode
 import utils
-from db.starters import starters
-
 
 def welcome_message(user):
     first_name = user.first_name or "Captain"

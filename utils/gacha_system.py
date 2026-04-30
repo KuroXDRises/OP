@@ -2,16 +2,20 @@ import random
 import math
 import utils
 
+characters = utils.load_characters()
+
+selected_chars = ["Helmeppo", "Morgan", "Cabaji", "Usopp", "Nami"]
+
 currency = {
     "beli": {
         "item": "beli",
         "amount": [500, 1000],
-        "chance": 62
+        "chance": 55
     },
     "neo_fragments": {
         "item": "neo_fragments",
         "amount": [1, 10],
-        "chance": 25
+        "chance": 20
     },
     "devil_tickets": {
         "item": "devil_tickets",
@@ -20,114 +24,140 @@ currency = {
     }
 }
 
+CHARACTER_CHANCE = 15
 
-def get_random_item():
-    total_chance = sum(data["chance"] for data in currency.values())
+def get_spin_chars():
+    return [c for c in characters if c["name"] in selected_chars]
 
-    roll = random.uniform(1, total_chance)
+def get_random_character():
+    return random.choice(get_spin_chars())
+
+def get_random_currency():
+    total = sum(d["chance"] for d in currency.values())
+    roll = random.uniform(1, total)
+
     current = 0
-
-    for key, data in currency.items():
-        current += data["chance"]
+    for d in currency.values():
+        current += d["chance"]
 
         if roll <= current:
-            low = data["amount"][0]
-            high = data["amount"][1]
+            low, high = d["amount"]
 
             amount = math.floor(
                 random.uniform(low, high + 1)
             )
 
             return {
-                "item": data["item"],
+                "type": "currency",
+                "item": d["item"],
                 "amount": amount,
-                "chance": data["chance"]
+                "chance": d["chance"]
             }
 
+def spin_once():
+    if random.randint(1, 100) <= CHARACTER_CHANCE:
+        return {
+            "type": "character",
+            "data": get_random_character()
+        }
 
-def sort_rewards(rewards):
+    return get_random_currency()
+
+def spin_multiple(spins=1):
+    return [spin_once() for _ in range(spins)]
+
+def merge_rewards(rewards):
     merged = {}
-
-    for reward in rewards:
-        item = reward["item"]
-
-        if item not in merged:
-            merged[item] = {
-                "item": item,
-                "amount": 0,
-                "chance": reward["chance"]
-            }
-
-        merged[item]["amount"] += reward["amount"]
-
-    return sorted(
-        merged.values(),
-        key=lambda x: x["chance"],
-        reverse=True
-    )
-
-
-def format_rewards(rewards):
-    text = ""
+    chars = []
 
     for r in rewards:
-        text += f"➩ {r['item']:<18} x {r['amount']}\n"
+        if r["type"] == "character":
+            chars.append(r["data"])
+            continue
+
+        item = r["item"]
+        merged[item] = merged.get(item, 0) + r["amount"]
+
+    return merged, chars
+
+def format_rewards(rewards):
+    merged, chars = merge_rewards(rewards)
+
+    text = "✧═══════════════✧\n"
+    text += "        GACHA RESULT\n"
+    text += "✧═══════════════✧\n"
+
+    for c in chars:
+        text += f"➤ {c['name']}\n"
+
+    for item, amount in merged.items():
+        text += f"➤ {item:<15} x {amount}\n"
+
+    text += "✧═══════════════✧"
 
     return text
 
+def format_character_msg(char):
+    return f"""
+✧═══════════════✧
+      NEW CHARACTER
+✧═══════════════✧
+➤ {char['name']}
+➤ Type    : {char['type']}
+➤ Element : {char['element']}
 
-def spin_rewards(spins):
-    rewards = [
-        get_random_item()
-        for _ in range(spins)
-    ]
+☠ A new fighter joined your crew
+✧═══════════════✧
+"""
 
-    return sort_rewards(rewards)
-
-
-def reward_message(rewards):
-    return format_rewards(rewards)
-
-
-def one_spin():
-    rewards = spin_rewards(1)
-    return reward_message(rewards)
-
-
-def five_spin():
-    rewards = spin_rewards(5)
-    return reward_message(rewards)
-
-
-def ten_spin():
-    rewards = spin_rewards(10)
-    return reward_message(rewards)
-
-
-def add_spin_rewards(user_id, rewards):
-
+def add_rewards(user_id, rewards):
     data = utils.get_user(user_id)
 
-    if data is None:
+    if not data:
         return False
 
-    for reward in rewards:
+    merged, chars = merge_rewards(rewards)
 
-        item = reward["item"]
-        amount = reward["amount"]
-
+    for item, amount in merged.items():
         if item in data["currency"]:
             data["currency"][item] += amount
-
-        elif item in data["inv"]:
-            data["inv"][item] += amount
-
         else:
-            data["inv"][item] = amount
-    
-    data["last_transaction"] = f"+ {rewards}"
-    data["last_spin"] = f"+ {rewards}"
+            data["currency"][item] = amount
+
+    if "chars" not in data:
+        data["chars"] = []
+
+    existing_names = {x["name"] for x in data["chars"] if isinstance(x, dict)}
+
+    for c in chars:
+
+        if not isinstance(c, dict):
+            continue
+
+        if c["name"] in existing_names:
+            data["currency"]["beli"] += 5000
+            continue
+
+        _nc = utils.compact_character_data(c)
+        data["chars"].append(_nc)
+
+    data["last_spin"] = str(rewards)
 
     utils.save_user(data)
 
     return True
+
+def one_spin(user_id):
+    rewards = spin_multiple(1)
+    add_rewards(user_id, rewards)
+    return format_rewards(rewards), rewards
+
+def five_spin(user_id):
+    rewards = spin_multiple(5)
+    add_rewards(user_id, rewards)
+    return format_rewards(rewards), rewards
+
+def ten_spin(user_id):
+    rewards = spin_multiple(10)
+    add_rewards(user_id, rewards)
+    return format_rewards(rewards), rewards

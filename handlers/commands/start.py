@@ -2,7 +2,6 @@ from pyrogram import filters, Client
 from pyrogram.types import *
 from pyrogram.enums import *
 import utils
-from db.starters import *
 
 def start_handler(bot):
     @bot.on_message(filters.command("start"), group=1)

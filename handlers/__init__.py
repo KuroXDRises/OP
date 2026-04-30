@@ -15,3 +15,4 @@ from handlers.callbacks.cancle_task import *
 from handlers.commands.add import *
 from handlers.commands.profile import *
 from handlers.commands.leaderboard import *
+from handlers.commands.daily import *
